@@ -1,4 +1,4 @@
-def get_vacancies_by_salary(vacancies_data: list, salary_range: str):
+def get_vacancies_by_salary(vacancies_data: list, salary_range: str) -> list:
     """
     Фильтрует вакансии в пределах заданного диапазона зарплат.
 
@@ -16,7 +16,7 @@ def get_vacancies_by_salary(vacancies_data: list, salary_range: str):
     return ranged_vacancies
 
 
-def sort_vacancies(vacancies_data: list):
+def sort_vacancies(vacancies_data: list) -> list:
     """
     Сортирует список вакансий по начальной зарплате в порядке убывания.
 
@@ -27,7 +27,7 @@ def sort_vacancies(vacancies_data: list):
     return sorted(vacancies_data, key=lambda x: x.salary_from, reverse=True)
 
 
-def get_top_vacancies(vacancies_data: list, top_n):
+def get_top_vacancies(vacancies_data: list, top_n) -> list:
     """
     Возвращает N лучших вакансий из отсортированного списка.
 
@@ -39,7 +39,12 @@ def get_top_vacancies(vacancies_data: list, top_n):
     return vacancies_data[:top_n]
 
 
+def filter_vacancies(vacancies, filter_words) -> list:
+    """
+    Фильтрует вакансии по ключевым словам в описании.
 
-def filter_vacancies(vacancies, filter_words):
-
+    :param vacancies: Список объектов вакансий для фильтрации.
+    :param filter_words: Список ключевых слов для фильтрации.
+    :return: Список отфильтрованных вакансий.
+    """
     return [vac for vac in vacancies if vac.description and any(word in vac.description for word in filter_words)]
