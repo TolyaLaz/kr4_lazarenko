@@ -1,5 +1,5 @@
 class Vacancy:
-    __slots__ = ['name', 'url', 'description', 'salary_from', 'salary_to', 'currency']
+    __slots__ = ['__name', 'url', 'description', 'salary_from', 'salary_to', 'currency']
 
     def __init__(self, name, url, description, salary_from, salary_to, currency):
         """
@@ -12,7 +12,7 @@ class Vacancy:
         :param salary_to: Верхняя граница зарплаты.
         :param currency: Валюта зарплаты.
         """
-        self.name = name
+        self.__name = name
         self.url = url
         self.description = description
         self.salary_from = salary_from
@@ -25,7 +25,7 @@ class Vacancy:
 
         :return: Строковое представление вакансии.
         """
-        return f"\nВакансия: {self.name}\n" \
+        return f"\nВакансия: {self.__name}\n" \
                f"Зарплата: {self.salary_from} - {self.salary_to} {self.currency}\n" \
                f"Требования: {self.description}\n" \
                f"Ссылка: {self.url}"
@@ -71,7 +71,7 @@ class Vacancy:
         :return: Dictionary representation of the Vacancy object.
         """
         return {
-            'name': self.name,
+            'name': self.__name,
             'url': self.url,
             'description': self.description,
             'salary_from': self.salary_from,
