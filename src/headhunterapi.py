@@ -6,6 +6,7 @@ class Parser:
     """
     Абстрактный класс для работы с API HeadHunter
     """
+
     @abstractmethod
     def load_vacancies(self, keyword):
         """

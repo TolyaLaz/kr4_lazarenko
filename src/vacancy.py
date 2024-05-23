@@ -1,5 +1,17 @@
 class Vacancy:
+    __slots__ = ['name', 'url', 'description', 'salary_from', 'salary_to', 'currency']
+
     def __init__(self, name, url, description, salary_from, salary_to, currency):
+        """
+        Инициализирует объект вакансии.
+
+        :param name: Название вакансии.
+        :param url: Ссылка на вакансию.
+        :param description: Описание вакансии.
+        :param salary_from: Нижняя граница зарплаты.
+        :param salary_to: Верхняя граница зарплаты.
+        :param currency: Валюта зарплаты.
+        """
         self.name = name
         self.url = url
         self.description = description
@@ -7,13 +19,24 @@ class Vacancy:
         self.salary_to = salary_to
         self.currency = currency
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Возвращает строковое представление объекта вакансии.
+
+        :return: Строковое представление вакансии.
+        """
         return f"\nВакансия: {self.name}\n" \
                f"Зарплата: {self.salary_from} - {self.salary_to} {self.currency}\n" \
                f"Требования: {self.description}\n" \
                f"Ссылка: {self.url}"
 
-    def __lt__(self, other):
+    def __lt__(self, other) -> bool:
+        """
+        Сравнивает вакансии по нижней границе зарплаты.
+
+        :param other: Другая вакансия.
+        :return: Результат сравнения.
+        """
         if not isinstance(other, Vacancy):
             raise ValueError("Не является классом Vacancy")
         return self.salary_from < other.salary_from
